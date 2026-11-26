@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  bicep:
+    name: Bicep build and lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      # The Azure CLI is preinstalled on GitHub-hosted Ubuntu runners; no Azure login is needed
+      # to build and lint. Deployments stay manual for now (README, ADR 0001).
+      - name: Install Bicep
+        run: az bicep install --version v0.49.2
+      - name: Build and lint
+        run: make check

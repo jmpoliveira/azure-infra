@@ -1,0 +1,14 @@
+# Compiled templates and deployment outputs (build from source, never commit)
+*.json.bak
+infra/**/*.json
+!bicepconfig.json
+out/
+
+# Local parameter overrides, if ever used for secrets or personal ids
+env/*.local.bicepparam
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+.obsidian/
